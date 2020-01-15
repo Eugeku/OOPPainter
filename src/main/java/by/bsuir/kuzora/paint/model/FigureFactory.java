@@ -21,15 +21,28 @@ import static by.bsuir.kuzora.paint.model.constants.Constants.DEFAULT_SIZE;
  * package.</i>
  */
 public class FigureFactory {
+
+    /**
+     * Instance of {@link FigureFactory}
+     */
     private static final FigureFactory instance = new FigureFactory();
 
+    /**
+     * @return instance
+     * of {@link FigureFactory} object
+     */
     public static FigureFactory getInstance() {
         return instance;
     }
 
-    private FigureFactory() {
-    }
-
+    /**
+     * Method create
+     *
+     * @param figureType   object of enum {@link FigureType}
+     * @param bottomRightX x coordinate for right bottom figure point.
+     * @param bottomRightY y coordinate for right bottom figure point.
+     * @return instance of {@link FigureFactory} object
+     */
     public Figure create(FigureType figureType, double bottomRightX, double bottomRightY) {
         switch (figureType) {
             case RECTANGLE:
@@ -47,7 +60,7 @@ public class FigureFactory {
             case LINE:
                 return new Line(bottomRightX, bottomRightY, bottomRightX, bottomRightY);
             default:
-                throw new IllegalArgumentException("Unsupported type: " + figureType);
+                throw new IllegalArgumentException("Unsupported figure type: " + figureType);
         }
     }
 }
